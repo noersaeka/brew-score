@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "582162139168",
+    "project_id": "gerilya-944a3",
+    "storage_bucket": "gerilya-944a3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582162139168:android:61cfdb91e6e72c6402d445",
+        "android_client_info": {
+          "package_name": "com.zlpdigital.apps.gerilya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxS0uxJTeta2PfHZG9bRcXJI0YLsI9CJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-package com.brewscore
+package com.zlpdigital.apps.gerilya
 
 import android.app.Application
 import com.facebook.react.PackageList

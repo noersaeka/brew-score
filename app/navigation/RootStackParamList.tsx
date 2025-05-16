@@ -76,4 +76,5 @@ export type RootStackParamList = {
     TabStyle4: undefined;
     Bean: undefined;
     Flight: undefined;
+    Data: undefined;
 };

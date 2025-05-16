@@ -6,31 +6,31 @@ import { View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 const Home = () => {
-    return(
+    return (
         <>
         </>
     )
 }
 const Market = () => {
-    return(
+    return (
         <>
         </>
     )
 }
 const Change = () => {
-    return(
+    return (
         <>
         </>
     )
 }
 const Wallet = () => {
-    return(
+    return (
         <>
         </>
     )
 }
 const Profile = () => {
-    return(
+    return (
         <>
         </>
     )
@@ -41,40 +41,40 @@ const Tab = createBottomTabNavigator();
 const TabStyle1 = () => {
 
     const theme = useTheme();
-    const { colors } : {colors : any} = theme;
+    const { colors }: { colors: any } = theme;
 
     return (
-        <View style={{flex:1,backgroundColor:colors.card}}>
-            <Header 
-                title={'Footer Style 1'} 
-                leftIcon={'back'} 
-                titleRight 
+        <View style={{ flex: 1, backgroundColor: colors.card }}>
+            <Header
+                title={'Footer Style 1'}
+                leftIcon={'back'}
+                titleRight
             />
             <Tab.Navigator
-                tabBar={(props:any) => <CustomNavigation {...props} />}
+                tabBar={(props: any) => <CustomNavigation {...props} />}
                 screenOptions={{
-                    headerShown:false,
+                    headerShown: false,
                 }}
                 initialRouteName="Change"
             >
-                <Tab.Screen 
+                <Tab.Screen
                     name="Home"
                     component={Home}
 
                 />
-                <Tab.Screen 
+                <Tab.Screen
                     name="Markets"
                     component={Market}
                 />
-                <Tab.Screen 
+                <Tab.Screen
                     name="Change"
                     component={Change}
                 />
-                <Tab.Screen 
+                <Tab.Screen
                     name="Wallet"
                     component={Wallet}
                 />
-                <Tab.Screen 
+                <Tab.Screen
                     name="Profile"
                     component={Profile}
                 />

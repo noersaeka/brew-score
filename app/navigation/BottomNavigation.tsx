@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabParamList } from './BottomTabParamList';
+import BeanScreen from '../screens/Bean/Bean';
+import FlightScreen from '../screens/Flight/Flight';
+import DataScreen from '../screens/Data/Data';
 import WishlistScreen from '../screens/Wishlist/Wishlist';
 import MyCartScreen from '../screens/MyCart/MyCart';
 import HomeScreen from '../screens/Home/Home';
@@ -70,12 +73,16 @@ const BottomNavigation = () => {
                         component={HomeScreen}
                     />
                     <Tab.Screen 
-                        name='Wishlist'
-                        component={WishlistScreen}
+                        name='Bean'
+                        component={BeanScreen}
                     />
                     <Tab.Screen 
-                        name='MyCart'
-                        component={MyCartScreen}
+                        name='Flight'
+                        component={FlightScreen}
+                    />
+                    <Tab.Screen 
+                        name='Data'
+                        component={DataScreen}
                     />
                     <Tab.Screen 
                         name='Profile'

@@ -35,10 +35,10 @@ const SignUp = ({navigation} : SignUpScreenProps) => {
                 <FeatherIcon name='arrow-left' size={24} color={COLORS.title}/>
             </TouchableOpacity>
             <View style={{flex:1,alignItems:'center',marginLeft:-40}}>
-                <Image
+                {/* <Image
                     style={{height:36}}
                     source={theme.dark ? IMAGES.appnamedark :IMAGES.appname}
-                />
+                /> */}
             </View>
         </View>
         <ScrollView style={{flexGrow:1,}} showsVerticalScrollIndicator={false}>
@@ -46,7 +46,7 @@ const SignUp = ({navigation} : SignUpScreenProps) => {
                 <View style={{}}>
                     <View style={{marginBottom:30}}>
                         <Text style={[styles.title1,{color:colors.title}]}>Create an account</Text>
-                        <Text style={[styles.title2, {color: colors.title }]}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</Text>
+                        <Text style={[styles.title2, {color: colors.title }]}>Start your brew journey — save your scores, recipes, and favorite brews</Text>
                     </View>
                     <View style={[GlobalStyleSheet.container,{padding:0}]}>
                         <Text style={[styles.title3,{color:'#8A8A8A'}]}>Username</Text>
@@ -58,7 +58,7 @@ const SignUp = ({navigation} : SignUpScreenProps) => {
                             onChangeText={(value) => console.log(value)}
                             isFocused={isFocused}
                             inputBorder
-                            defaultValue='williamsmith'
+                            defaultValue=''
                         />
                     </View>
                     <View style={[GlobalStyleSheet.container,{padding:0}]}>
@@ -72,7 +72,7 @@ const SignUp = ({navigation} : SignUpScreenProps) => {
                             onChangeText={(value) => console.log(value)}
                             isFocused={isFocused2}
                             inputBorder
-                            defaultValue='williamsmithy@mail.com'
+                            defaultValue=''
                         />
                     </View>
                     <View style={[GlobalStyleSheet.container,{padding:0}]}>
@@ -87,7 +87,7 @@ const SignUp = ({navigation} : SignUpScreenProps) => {
                             isFocused={isFocused3}
                             type={'password'}
                             inputBorder
-                            defaultValue='williamsmithy@mail.com'
+                            defaultValue=''
                         />
                     </View>
                 </View>

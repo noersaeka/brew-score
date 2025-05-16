@@ -1,6 +1,6 @@
-import React, {useEffect, useRef, useState} from 'react';
-import { 
-    View, 
+import React, { useEffect, useRef, useState } from 'react';
+import {
+    View,
     Animated,
     StyleSheet,
     TouchableOpacity,
@@ -9,7 +9,7 @@ import {
     Dimensions
 } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import { SIZES,COLORS,FONTS } from '../../../constants/theme';
+import { SIZES, COLORS, FONTS } from '../../../constants/theme';
 import { IMAGES } from '../../../constants/Images';
 import { GlobalStyleSheet } from '../../../constants/StyleSheet';
 
@@ -19,23 +19,23 @@ import {
 } from 'react-native-responsive-screen';
 
 
-const home  = require('../../../assets/images/icons/home.png');
-const wallet  = require('../../../assets/images/icons/wallet.png');
-const profile  = require('../../../assets/images/icons/user.png');
-const transfer  = require('../../../assets/images/icons/transfer.png');
-const trade  = require('../../../assets/images/icons/trade.png');
+const home = require('../../../assets/images/icons/home.png');
+const wallet = require('../../../assets/images/icons/wallet.png');
+const profile = require('../../../assets/images/icons/user.png');
+const transfer = require('../../../assets/images/icons/transfer.png');
+const trade = require('../../../assets/images/icons/trade.png');
 
 type Props = {
-    state : any,
-    navigation : any,
-    descriptors : any
+    state: any,
+    navigation: any,
+    descriptors: any
 }
 
-const CustomNavigation = ({state, navigation, descriptors}: Props) => {
+const CustomNavigation = ({ state, navigation, descriptors }: Props) => {
 
     const theme = useTheme();
-    const {colors} : {colors : any} = theme;
-    
+    const { colors }: { colors: any } = theme;
+
     const [tabWidth, setWidth] = useState(wp('100%'));
 
     const tabWD =
@@ -48,16 +48,16 @@ const CustomNavigation = ({state, navigation, descriptors}: Props) => {
     Dimensions.addEventListener('change', val => {
         setWidth(val.window.width);
     });
-    
+
     useEffect(() => {
         Animated.spring(circlePosition, {
             toValue: state.index * tabWD,
             useNativeDriver: true,
         }).start();
-    },[state.index,tabWidth])
+    }, [state.index, tabWidth])
 
 
-    const onTabPress = (index:any) => {
+    const onTabPress = (index: any) => {
         const tabW =
             tabWidth < SIZES.container ? tabWidth / 5 : SIZES.container / 5; // Adjust this according to your tab width
 
@@ -72,20 +72,20 @@ const CustomNavigation = ({state, navigation, descriptors}: Props) => {
 
     return (
         <View style={{
-                height:60,
-                flexDirection:'row',
-                shadowColor: "rgba(0,0,0,.6)",
-                shadowOffset: {
-                    width: 0,
-                    height: 4,
-                },
-                shadowOpacity: 0.30,
-                shadowRadius: 4.65,
-                elevation: 8,
-                backgroundColor:theme.dark ? 'rgba(0,9,9,.6)' :colors.card,
+            height: 60,
+            flexDirection: 'row',
+            shadowColor: "rgba(0,0,0,.6)",
+            shadowOffset: {
+                width: 0,
+                height: 4,
+            },
+            shadowOpacity: 0.30,
+            shadowRadius: 4.65,
+            elevation: 8,
+            backgroundColor: theme.dark ? 'rgba(0,9,9,.6)' : colors.card,
         }}>
             <View
-                style={[GlobalStyleSheet.container,{
+                style={[GlobalStyleSheet.container, {
                     flexDirection: 'row',
                     paddingHorizontal: 0,
                     paddingTop: 0,
@@ -93,14 +93,14 @@ const CustomNavigation = ({state, navigation, descriptors}: Props) => {
                 }]}
             >
 
-                <Animated.View style={{transform: [{translateX: circlePosition}]}}>
+                <Animated.View style={{ transform: [{ translateX: circlePosition }] }}>
                     <View
                         style={{
                             width: tabWidth < SIZES.container ? tabWidth / 5 : SIZES.container / 5,
                             position: 'absolute',
                             //backgroundColor:'red',
                             zIndex: 1,
-                            bottom:10,
+                            bottom: 10,
                             left: 0,
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -117,24 +117,24 @@ const CustomNavigation = ({state, navigation, descriptors}: Props) => {
                         /> */}
                         <View
                             style={{
-                                height:45,
-                                width:45,
-                                borderRadius:45,
-                                backgroundColor:theme.dark ? COLORS.white :COLORS.primary,
+                                height: 45,
+                                width: 45,
+                                borderRadius: 45,
+                                backgroundColor: theme.dark ? COLORS.white : COLORS.primary,
                             }}
                         />
                     </View>
                 </Animated.View>
 
-                {state.routes.map((route:any , index:string) => {
+                {state.routes.map((route: any, index: string) => {
 
-                    const {options} = descriptors[route.key];
+                    const { options } = descriptors[route.key];
                     const label =
-                    options.tabBarLabel !== undefined
-                        ? options.tabBarLabel
-                        : options.title !== undefined
-                        ? options.title
-                        : route.name;
+                        options.tabBarLabel !== undefined
+                            ? options.tabBarLabel
+                            : options.title !== undefined
+                                ? options.title
+                                : route.name;
 
                     const isFocused = state.index === index;
 
@@ -151,45 +151,45 @@ const CustomNavigation = ({state, navigation, descriptors}: Props) => {
                             target: route.key,
                             canPreventDefault: true,
                         });
-        
+
                         if (!isFocused && !event.defaultPrevented) {
-                            navigation.navigate({name: route.name, merge: true});
+                            navigation.navigate({ name: route.name, merge: true });
                             onTabPress(index);
                         }
                     };
 
-                    return(
+                    return (
                         <View
                             key={index}
                             style={styles.tabItem}
-                        >   
+                        >
                             <TouchableOpacity
                                 onPress={onPress}
                                 style={styles.tabLink}
                             >
                                 <Animated.View
                                     style={{
-                                        transform: [{translateY: iconTranslateY}],
-                                }}>
-                                    <Image 
+                                        transform: [{ translateY: iconTranslateY }],
+                                    }}>
+                                    <Image
                                         style={{
-                                            height:20,
-                                            width:20,
-                                            resizeMode:'contain',
-                                            marginBottom:10,
-                                            opacity:isFocused ? 1 : .6,
-                                            tintColor:isFocused ?theme.dark ? COLORS.title : COLORS.white : colors.text,
+                                            height: 20,
+                                            width: 20,
+                                            resizeMode: 'contain',
+                                            marginBottom: 10,
+                                            opacity: isFocused ? 1 : .6,
+                                            tintColor: isFocused ? theme.dark ? COLORS.title : COLORS.white : colors.text,
                                         }}
                                         source={
-                                            label === 'Home'    ?  home:
-                                            label === 'Markets' ?  transfer:
-                                            label === 'Change'   ?  trade:
-                                            label === 'Wallet'   ?  wallet:
-                                            label === 'Profile'  ?  profile : IMAGES.Home
+                                            label === 'Home' ? home :
+                                                label === 'Markets' ? transfer :
+                                                    label === 'Change' ? trade :
+                                                        label === 'Wallet' ? wallet :
+                                                            label === 'Profile' ? profile : IMAGES.Home
                                         }
                                     />
                                 </Animated.View>
-                                <Text style={[styles.navText,{color:colors.title,opacity:isFocused ? 0 : 1}]}>{label}</Text>
+                                <Text style={[styles.navText, { color: colors.title, opacity: isFocused ? 0 : 1 }]}>{label}</Text>
                             </TouchableOpacity>
                         </View>
                     )
@@ -200,23 +200,23 @@ const CustomNavigation = ({state, navigation, descriptors}: Props) => {
 }
 
 const styles = StyleSheet.create({
-    tabBar : {
-        height : 60,
-        borderTopWidth:1,
+    tabBar: {
+        height: 60,
+        borderTopWidth: 1,
     },
-    tabItem : {
+    tabItem: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         height: 60,
     },
-    tabLink : {
+    tabLink: {
         alignItems: 'center',
     },
-    navText : {
+    navText: {
         ...FONTS.fontXs,
         ...FONTS.fontMedium,
     }
 });
- 
+
 export default CustomNavigation;

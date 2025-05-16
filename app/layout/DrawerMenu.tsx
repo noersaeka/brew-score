@@ -16,54 +16,54 @@ const MenuItems = [
         name: "Home",
         navigate: "Home",
     },
-    {
-        id:"1",
-        icon: IMAGES.producta,
-        name: "Products",
-        navigate: "Products",
-    },
-    {
-        id:"2",
-        icon: IMAGES.components,
-        name: "Components",
-        navigate: "Components",
-    },
-    {
-        id:"3",
-        icon: IMAGES.star,
-        name: "Featured",
-        navigate: "Writereview",
-    },
-    {
-        id:"4",
-        icon: IMAGES.heart,
-        name: "Wishlist",
-        navigate: "Wishlist",
-    },
-    {
-        id:"5",
-        icon: IMAGES.order,
-        name: "My Orders",
-        navigate: 'Myorder',
-    },
-    {
-        id:"6",
-        icon: IMAGES.shopping,
-        name: "My Cart",
-        navigate: 'MyCart',
-    },
-    {
-        id:"7",
-        icon: IMAGES.chat,
-        name: "Chat List",
-        navigate: 'Chat',
-    },
-    {
-        id:"8",
-        icon: IMAGES.user3,
-        name: "Profile",
-        navigate: "Profile",
-    },
+    // {
+    //     id:"1",
+    //     icon: IMAGES.producta,
+    //     name: "Products",
+    //     navigate: "Products",
+    // },
+    // {
+    //     id:"2",
+    //     icon: IMAGES.components,
+    //     name: "Components",
+    //     navigate: "Components",
+    // },
+    // {
+    //     id:"3",
+    //     icon: IMAGES.star,
+    //     name: "Featured",
+    //     navigate: "Writereview",
+    // },
+    // {
+    //     id:"4",
+    //     icon: IMAGES.heart,
+    //     name: "Wishlist",
+    //     navigate: "Wishlist",
+    // },
+    // {
+    //     id:"5",
+    //     icon: IMAGES.order,
+    //     name: "My Orders",
+    //     navigate: 'Myorder',
+    // },
+    // {
+    //     id:"6",
+    //     icon: IMAGES.shopping,
+    //     name: "My Cart",
+    //     navigate: 'MyCart',
+    // },
+    // {
+    //     id:"7",
+    //     icon: IMAGES.chat,
+    //     name: "Chat List",
+    //     navigate: 'Chat',
+    // },
+    // {
+    //     id:"8",
+    //     icon: IMAGES.user3,
+    //     name: "Profile",
+    //     navigate: "Profile",
+    // },
     {
         id:"9",
         icon: IMAGES.logout,
@@ -100,10 +100,10 @@ const DrawerMenu = ({navigation}:any) => {
                         paddingRight:10
                     }}
                 >
-                    <Image
+                    {/* <Image
                         style={{height:35,alignItems:'flex-end'}}
                         source={theme.dark ? IMAGES.appnamedark :IMAGES.appname}
-                    />
+                    /> */}
                 </View>
                 <View
                     style={[GlobalStyleSheet.flex,{
@@ -154,7 +154,7 @@ const DrawerMenu = ({navigation}:any) => {
                     <ThemeBtn />
                 </View>
                 <View style={{paddingVertical:15,paddingHorizontal:10}}>
-                    <Text style={{...FONTS.fontMedium,fontSize:16,color:'#868686'}}>Ombe Coffee App</Text>
+                    <Text style={{...FONTS.fontMedium,fontSize:16,color:'#868686'}}>BrewScore</Text>
                     <Text style={{...FONTS.fontMedium,fontSize:12,color:'#B1B1C3'}}>App Version 1.0.0</Text>
                 </View>
             </View> 

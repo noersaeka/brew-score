@@ -32,7 +32,7 @@ const Trackorder = ({navigation} : TrackorderScreenProps)  => {
         }
     })
 
-    const GOOGLE_MAPS_APIKEY = "AIzaSyCmpq6ns1sG4YZY0wiGT6dZwrUV1P4Lfr0";
+    const GOOGLE_MAPS_APIKEY = "";
 
     const {pickcupCords ,droplocationCords} = state
 

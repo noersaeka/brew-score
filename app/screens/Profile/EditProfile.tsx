@@ -71,7 +71,7 @@ const EditProfile = () => {
                             </TouchableOpacity>
                         </View>
                         <View>
-                            <Text style={[FONTS.fontMedium,{fontSize:19,color:colors.title}]}>James Smith</Text>
+                            <Text style={[FONTS.fontMedium,{fontSize:19,color:colors.title}]}>John Doe</Text>
                             <Text style={[FONTS.fontRegular,{fontSize:12,color:colors.text}]}>Last Visit : 17 Jan 2024</Text>
                         </View>
                     </View>

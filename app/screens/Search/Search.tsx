@@ -8,18 +8,18 @@ import { IMAGES } from '../../constants/Images';
 
 
 const SearchData = [
-    {
-        title: "Hot Cappuccino Latte with Mocha",
-    },
-    {
-        title: "Sweet Lemon Indonesian Tea",
-    },
-    {
-        title: "Arabica Latte Ombe Coffee",
-    },
-    {
-        title: "Original Hot Coffee",
-    },
+    // {
+    //     title: "Hot Cappuccino Latte with Mocha",
+    // },
+    // {
+    //     title: "Sweet Lemon Indonesian Tea",
+    // },
+    // {
+    //     title: "Arabica Latte Ombe Coffee",
+    // },
+    // {
+    //     title: "Original Hot Coffee",
+    // },
 ]
 
 const Search = ({navigation} : any) => {

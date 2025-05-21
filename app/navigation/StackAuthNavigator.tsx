@@ -97,13 +97,13 @@ const StackAuthNavigator = () => {
 			>
 				<Stack.Screen name="Onboarding" component={Onboarding} />
 				<Stack.Screen name="WelCome" component={WelCome} />
+				<Stack.Screen name="DrawerNavigation" component={DrawerNavigation} />
 				<Stack.Screen name="SignUp" component={SignUp} />
 				<Stack.Screen name="SingIn" component={SingIn} />
 				<Stack.Screen name="ForgotPassword" component={ForgotPassword} />
 				<Stack.Screen name="OTPAuthentication" component={OTPAuthentication} />
 				<Stack.Screen name="NewPassword" component={NewPassword} />
 				<Stack.Screen name="BottomNavigation" component={BottomNavigation} />
-				<Stack.Screen name="DrawerNavigation" component={DrawerNavigation} />
 				<Stack.Screen name="Notification" component={Notification} />
 				<Stack.Screen name="Search" component={Search} />
 				<Stack.Screen name="Products" component={Products} />

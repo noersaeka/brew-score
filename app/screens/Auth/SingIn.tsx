@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, TouchableOpacity, Image, ScrollView, StyleSheet } from 'react-native'
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { COLORS, FONTS } from '../../constants/theme'
 import { GlobalStyleSheet } from '../../constants/StyleSheet'
 import { useTheme } from '@react-navigation/native'
@@ -9,7 +9,8 @@ import Input from '../../components/Input/Input'
 import { IMAGES } from '../../constants/Images'
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Button from '../../components/Button/Button'
-
+import { getAuth, signInWithEmailAndPassword } from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type SingInScreenProps = StackScreenProps<RootStackParamList, 'SingIn'>;
 
@@ -21,13 +22,37 @@ const SingIn = ({ navigation }: SingInScreenProps) => {
     const [isFocused, setisFocused] = useState(false);
     const [isFocused2, setisFocused2] = useState(false);
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSignIn = async () => {
+        signInWithEmailAndPassword(getAuth(), email, password)
+            .then(async () => {
+                console.log('User account created & signed in!');
+                const idToken = await getAuth().currentUser.getIdToken(true);
+                await AsyncStorage.setItem('userToken', idToken);
+                navigation.navigate('DrawerNavigation', { screen: 'Home' })
+            })
+            .catch(error => {
+                if (error.code === 'auth/email-already-in-use') {
+                    console.log('That email address is already in use!');
+                }
+
+                if (error.code === 'auth/invalid-email') {
+                    console.log('That email address is invalid!');
+                }
+
+                console.error(error);
+            });
+
+    }
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.card, }}>
             <View style={[GlobalStyleSheet.container, { justifyContent: 'center', alignItems: 'center', paddingVertical: 50 }]}>
-                <Image
+                {/* <Image
                     style={{ resizeMode: 'contain', height: 36 }}
                     source={theme.dark ? IMAGES.appnamedark : IMAGES.appname}
-                />
+                /> */}
             </View>
             <ScrollView style={{ flexGrow: 1, }} showsVerticalScrollIndicator={false}>
                 <View style={[GlobalStyleSheet.container, { flexGrow: 1, paddingBottom: 0, paddingHorizontal: 30, paddingTop: 0 }]}>
@@ -37,16 +62,18 @@ const SingIn = ({ navigation }: SingInScreenProps) => {
                             <Text style={[styles.title2, { color: colors.title }]}>Log your brews, improve consistency, and discover what makes your perfect cup</Text>
                         </View>
                         <View style={[GlobalStyleSheet.container, { padding: 0 }]}>
-                            <Text style={[styles.title3, { color: '#8A8A8A' }]}>Username</Text>
+                            <Text style={[styles.title3, { color: '#8A8A8A' }]}>Email</Text>
                         </View>
                         <View style={{ marginBottom: 20, marginTop: 10 }}>
                             <Input
                                 onFocus={() => setisFocused(true)}
                                 onBlur={() => setisFocused(false)}
-                                onChangeText={(value) => console.log(value)}
+                                onChangeText={(value) => setEmail(value)}
+                                value={email}
                                 isFocused={isFocused}
                                 inputBorder
-                                defaultValue='williamsmith'
+                                defaultValue=''
+                                placeholder='Enter your email'
                             />
                         </View>
                         <View style={[GlobalStyleSheet.container, { padding: 0 }]}>
@@ -57,18 +84,21 @@ const SingIn = ({ navigation }: SingInScreenProps) => {
                                 onFocus={() => setisFocused2(true)}
                                 onBlur={() => setisFocused2(false)}
                                 backround={colors.card}
-                                onChangeText={(value) => console.log(value)}
+                                onChangeText={(value) => setPassword(value)}
+                                value={password}
                                 isFocused={isFocused2}
                                 type={'password'}
                                 inputBorder
-                                defaultValue='123456789'
+                                defaultValue=''
+                                placeholder='Enter your password'
                             />
                         </View>
                     </View>
                     <View style={{ marginTop: 30 }}>
                         <Button
                             title={"LOGIN"}
-                            onPress={() => navigation.navigate('DrawerNavigation', { screen: 'Home' })}
+                            // onPress={() => navigation.navigate('DrawerNavigation', { screen: 'Home' })}
+                            onPress={handleSignIn}
                             style={{ borderRadius: 52 }}
                         />
                         <View
@@ -101,7 +131,6 @@ const SingIn = ({ navigation }: SingInScreenProps) => {
                     </View>
                 </View>
             </ScrollView>
-
             <View style={[GlobalStyleSheet.container, { justifyContent: 'center', alignItems: 'center', paddingVertical: 0 }]}>
                 <TouchableOpacity
                     style={{

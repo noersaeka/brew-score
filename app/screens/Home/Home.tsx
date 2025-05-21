@@ -133,7 +133,7 @@ export const Home = ({ navigation }: HomeScreenProps) => {
                     <View style={[GlobalStyleSheet.flex]}>
                         <View>
                             <Text style={{ ...FONTS.fontRegular, fontSize: 14, color: colors.title }}>Good Morning</Text>
-                            <Text style={{ ...FONTS.fontSemiBold, fontSize: 24, color: colors.title }}>Williams</Text>
+                            <Text style={{ ...FONTS.fontSemiBold, fontSize: 24, color: colors.title }}>John</Text>
                         </View>
                         <View style={{flexDirection:'row',alignItems:'center'}}>
                             <TouchableOpacity
@@ -175,7 +175,7 @@ export const Home = ({ navigation }: HomeScreenProps) => {
                 </View>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={[GlobalStyleSheet.container,{padding:0,paddingHorizontal:30,paddingTop:15}]}>
+                {/* <View style={[GlobalStyleSheet.container,{padding:0,paddingHorizontal:30,paddingTop:15}]}>
                     <View>
                         <TextInput
                             placeholder='Search Best items for You'
@@ -185,8 +185,8 @@ export const Home = ({ navigation }: HomeScreenProps) => {
                             <FeatherIcon name='search' size={24} color={'#C9C9C9'} />
                         </View>
                     </View>
-                </View>
-                <View style={{alignItems:'center'}}>
+                </View> */}
+                {/* <View style={{alignItems:'center'}}>
                     <View style={[GlobalStyleSheet.container,{padding:0,}]}>
                         <ImageSwiper
                             data={SwiperData}
@@ -256,7 +256,7 @@ export const Home = ({ navigation }: HomeScreenProps) => {
                             </View>
                         );
                     })}
-                </View>
+                </View> */}
             </ScrollView>
         </View>
     );

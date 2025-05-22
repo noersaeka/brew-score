@@ -10,7 +10,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import themeContext from "../constants/themeContext";
 import { COLORS } from "../constants/theme";
 import StackNavigator from "./StackNavigator";
-import StackAuthNavigator from "./StackAuthNavigator";
+import { ToastProvider } from '../context/ToastContext';
 
 const Route = () => {
 
@@ -58,7 +58,9 @@ const Route = () => {
     <SafeAreaProvider>
       <themeContext.Provider value={authContext}>
         <NavigationContainer theme={theme}>
-          <StackNavigator />
+          <ToastProvider>
+            <StackNavigator />
+          </ToastProvider>
         </NavigationContainer>
       </themeContext.Provider>
     </SafeAreaProvider>

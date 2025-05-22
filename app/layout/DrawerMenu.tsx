@@ -10,6 +10,7 @@ import { closeDrawer } from '../redux/actions/drawerAction';
 import { GlobalStyleSheet } from '../constants/StyleSheet';
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DeviceInfo from 'react-native-device-info';
 
 const DrawerMenu = ({ navigation }: any) => {
 
@@ -106,8 +107,8 @@ const DrawerMenu = ({ navigation }: any) => {
                     <ThemeBtn />
                 </View>
                 <View style={{ paddingVertical: 15, paddingHorizontal: 10 }}>
-                    <Text style={{ ...FONTS.fontMedium, fontSize: 16, color: '#868686' }}>BrewScore</Text>
-                    <Text style={{ ...FONTS.fontMedium, fontSize: 12, color: '#B1B1C3' }}>App Version 1.0.0</Text>
+                    <Text style={{ ...FONTS.fontMedium, fontSize: 16, color: '#868686' }}>{DeviceInfo.getApplicationName()}</Text>
+                    <Text style={{ ...FONTS.fontMedium, fontSize: 12, color: '#B1B1C3' }}>App Version {DeviceInfo.getVersion()}</Text>
                 </View>
             </View>
         </ScrollView>

@@ -6,6 +6,8 @@ import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import Route from './app/navigation/Route';
 import store from './app/redux/store';
+import NetworkStatusBanner from './app/components/NetworkStatusBanner';
+// import { ToastProvider } from './app/context/ToastContext';
 
 export default class App extends Component {
 
@@ -16,16 +18,19 @@ export default class App extends Component {
   render() {
     return (
       <SafeAreaProvider>
-        <SafeAreaView
-          style={{
-            flex: 1
-          }}>
-              <StatusBar style="dark" />
-              <Provider store={store}>
-                  <Route/>
-              </Provider>
-        </SafeAreaView>
-    </SafeAreaProvider>
+        {/* <ToastProvider> */}
+          <SafeAreaView
+            style={{
+              flex: 1
+            }}>
+            <StatusBar style="dark" />
+            <NetworkStatusBanner />
+            <Provider store={store}>
+              <Route />
+            </Provider>
+          </SafeAreaView>
+        {/* </ToastProvider> */}
+      </SafeAreaProvider>
     );
   }
 

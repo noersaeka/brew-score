@@ -11,12 +11,14 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import Button from '../../components/Button/Button'
 import { getAuth, signInWithEmailAndPassword } from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useToast } from '../../context/ToastContext';
 
 type SingInScreenProps = StackScreenProps<RootStackParamList, 'SingIn'>;
 
 const SingIn = ({ navigation }: SingInScreenProps) => {
 
     const theme = useTheme();
+    const toast = useToast();
     const { colors }: { colors: any } = theme;
 
     const [isFocused, setisFocused] = useState(false);
@@ -34,15 +36,22 @@ const SingIn = ({ navigation }: SingInScreenProps) => {
                 navigation.navigate('DrawerNavigation', { screen: 'Home' })
             })
             .catch(error => {
-                if (error.code === 'auth/email-already-in-use') {
-                    console.log('That email address is already in use!');
+                console.log('error', error.code)
+                if (error.code === 'auth/user-not-found') {
+                    toast.show("User not found!", 'error')
                 }
-
+                if (error.code === 'auth/wrong-password') {
+                    toast.show("Wrong Password!", 'error')
+                }
                 if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
+                    toast.show("Invalid Email!", 'error')
                 }
-
-                console.error(error);
+                if (error.code === 'auth/user-disabled') {
+                    toast.show("Used disabled!", 'error')
+                }
+                if (error.code === 'auth/invalid-credential') {
+                    toast.show("Invalid Credential!", 'error')
+                }
             });
 
     }
@@ -131,7 +140,7 @@ const SingIn = ({ navigation }: SingInScreenProps) => {
                     </View>
                 </View>
             </ScrollView>
-            <View style={[GlobalStyleSheet.container, { justifyContent: 'center', alignItems: 'center', paddingVertical: 0 }]}>
+            <View style={[GlobalStyleSheet.container, { justifyContent: 'center', alignItems: 'center', paddingVertical: 0, paddingBottom: 10 }]}>
                 <TouchableOpacity
                     style={{
                         flexDirection: 'row',

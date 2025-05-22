@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView } from 'react-native'
+import { View, Text, Image, Platform, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
@@ -23,6 +23,7 @@ type WelComeScreenProps = StackScreenProps<RootStackParamList, 'WelCome'>;
 const WelCome = ({ navigation }: WelComeScreenProps) => {
 
     const theme = useTheme();
+
     const { colors }: { colors: any } = theme;
 
     const handleGoogleSignIn = async () => {
@@ -85,11 +86,13 @@ const WelCome = ({ navigation }: WelComeScreenProps) => {
                                 rounded
                                 icon={<FontAwesome name='envelope' size={22} color={COLORS.card} />}
                                 border={COLORS.primary}
-                                onpress={() => navigation.navigate('SingIn')}
+                                onpress={() => {
+                                    navigation.navigate('SingIn')
+                                }}
                             />
                         </View>
                         <View style={{ marginBottom: 10 }}>
-                            <SocialBtn
+                            {Platform.OS == "ios" && <SocialBtn
                                 text='Continue with Apple'
                                 color={COLORS.card}
                                 textcolor={COLORS.title}
@@ -97,7 +100,7 @@ const WelCome = ({ navigation }: WelComeScreenProps) => {
                                 icon={<Ionicons name='logo-apple' size={22} />}
                                 onpress={handleAppleSignIn}
                             // border={'#376AED'}
-                            />
+                            />}
 
                             {/* <AppleButton onPress={onAppleButtonPress} /> */}
                             {/* <AppleButton
@@ -109,6 +112,7 @@ const WelCome = ({ navigation }: WelComeScreenProps) => {
                                 }}
                                 onPress={() => onAppleButtonPress().then(() => console.log('Apple sign-in complete!'))}
                             /> */}
+
                         </View>
                         <View>
                             <SocialBtn

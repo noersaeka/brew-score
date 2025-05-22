@@ -3,8 +3,11 @@ import auth from '@react-native-firebase/auth';
 import { firebaseWebConfig } from './web-config';
 import { InAppBrowser } from 'react-native-inappbrowser-reborn';
 import { Linking } from 'react-native';
+// import { API_URL, FIREBASE_GOOGLE_REDIRECT_URL } from '@env';
+import Config from "react-native-config";
 
-const redirectUri = 'https://gerilya-944a3.firebaseapp.com/__/auth/handler'; // or use dynamic link
+
+const redirectUri = Config.FIREBASE_GOOGLE_REDIRECT_URL; // or use dynamic link
 
 export async function googleSignInWithWeb() {
   // const provider = new auth.GoogleAuthProvider();
